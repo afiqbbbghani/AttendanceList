@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Clock In/Out</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8">
+  <title>Student Attendance Portal</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1>Attendance System</h1>
-    <div id="login-form">
-      <input type="email" id="email" placeholder="Email" required>
-      <input type="password" id="password" placeholder="Password" required>
+    <h1>Welcome</h1>
+    <div id="login-section">
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="password" placeholder="Password" required />
       <button onclick="login()">Login</button>
     </div>
-    <div id="main-form" style="display:none;">
-      <input type="text" id="matric" placeholder="Enter Matric Number" required>
-      <div class="button-group">
-        <button onclick="submitAttendance('in')">Clock In</button>
-        <button onclick="submitAttendance('out')">Clock Out</button>
-      </div>
-      <button class="link-button" onclick="location.href='view.html'">View Attendance</button>
+
+    <div id="attendance-section" style="display:none;">
+      <input type="text" id="matric" placeholder="Matric Number" required />
+      <button onclick="clockIn()">Clock In</button>
+      <button onclick="clockOut()">Clock Out</button>
+      <button onclick="location.href='attendance.html'">View Attendance List</button>
     </div>
-    <div id="message"></div>
   </div>
   <script src="script.js"></script>
 </body>
