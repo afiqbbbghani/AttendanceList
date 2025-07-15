@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Clock In / Out</title>
+  <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Clock In / Out</h1>
+  <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+  <div id="form" style="display:none;">
+    <p id="user-email"></p>
+    <input type="text" id="matric" placeholder="Enter Matric Number" required>
+    <button onclick="submitData('Clock In')">Clock In</button>
+    <button onclick="submitData('Clock Out')">Clock Out</button>
+    <button onclick="signOut()">Sign Out</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
