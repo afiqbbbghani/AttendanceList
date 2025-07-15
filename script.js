@@ -21,7 +21,7 @@ function submitData(action) {
   const matric = document.getElementById("matric").value;
   if (!matric) return alert("Please enter your matric number.");
 
-  fetch('YOUR_WEB_APP_URL', {
+  fetch('https://script.google.com/macros/s/AKfycbxB2A5GZLBm8tkNElY20bZLZ3H_5chXf0v3EI7FRAg/dev', {
     method: 'POST',
     body: JSON.stringify({ email: userEmail, matric: matric, action: action }),
   })
