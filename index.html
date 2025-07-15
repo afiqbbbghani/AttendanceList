@@ -2,65 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clock In/Out System</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clock In/Out</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
-<body class="bg-gray-100 min-h-screen flex flex-col justify-center items-center">
-  <div class="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md">
-    <h1 class="text-2xl font-bold text-center mb-6 text-blue-600">Student Attendance</h1>
-    <div id="loginSection">
-      <input id="email" type="email" placeholder="Email" class="w-full mb-4 p-2 border rounded-md" />
-      <input id="password" type="password" placeholder="Password" class="w-full mb-4 p-2 border rounded-md" />
-      <button onclick="login()" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700">Login</button>
+<body>
+  <div class="container">
+    <h1>Attendance System</h1>
+    <div id="login-form">
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button onclick="login()">Login</button>
     </div>
-
-    <div id="mainSection" class="hidden">
-      <input id="matricNumber" type="text" placeholder="Matric Number" class="w-full mb-4 p-2 border rounded-md" />
-      <div class="flex gap-4">
-        <button onclick="clockInOut('in')" class="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600">Clock In</button>
-        <button onclick="clockInOut('out')" class="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600">Clock Out</button>
+    <div id="main-form" style="display:none;">
+      <input type="text" id="matric" placeholder="Enter Matric Number" required>
+      <div class="button-group">
+        <button onclick="submitAttendance('in')">Clock In</button>
+        <button onclick="submitAttendance('out')">Clock Out</button>
       </div>
-      <button onclick="viewAttendance()" class="w-full bg-gray-800 text-white py-2 rounded-md hover:bg-gray-900 mt-4">View Full Attendance</button>
+      <button class="link-button" onclick="location.href='view.html'">View Attendance</button>
     </div>
+    <div id="message"></div>
   </div>
-
-  <script>
-    const loginSection = document.getElementById('loginSection');
-    const mainSection = document.getElementById('mainSection');
-
-    if (localStorage.getItem('loggedIn')) {
-      loginSection.classList.add('hidden');
-      mainSection.classList.remove('hidden');
-    }
-
-    function login() {
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-
-      google.script.run.withSuccessHandler(response => {
-        if (response === true) {
-          localStorage.setItem('loggedIn', 'true');
-          loginSection.classList.add('hidden');
-          mainSection.classList.remove('hidden');
-        } else {
-          alert('Invalid credentials');
-        }
-      }).checkCredentials(email, password);
-    }
-
-    function clockInOut(type) {
-      const matricNumber = document.getElementById('matricNumber').value;
-      if (!matricNumber) return alert('Enter matric number');
-
-      google.script.run.recordAttendance(matricNumber, type);
-      alert(`Clock ${type === 'in' ? 'In' : 'Out'} successful.`);
-      document.getElementById('matricNumber').value = '';
-    }
-
-    function viewAttendance() {
-      window.open('https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID_HERE', '_blank');
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
