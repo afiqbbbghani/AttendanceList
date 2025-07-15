@@ -70,6 +70,16 @@ button:hover {
   background-color: #0c59d1;
 }
 
+/* Red style for Clock Out */
+button#clock-out {
+  background-color: #d93025; /* Google-style red */
+}
+
+button#clock-out:hover {
+  background-color: #b1271b;
+}
+
+
 /* Attendance table */
 table {
   width: 100%;
