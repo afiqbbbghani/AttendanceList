@@ -1,4 +1,4 @@
-fetch('YOUR_WEB_APP_VIEW_URL')
+fetch('https://script.google.com/macros/s/AKfycbxB2A5GZLBm8tkNElY20bZLZ3H_5chXf0v3EI7FRAg/dev')
   .then(res => res.json())
   .then(data => {
     const table = document.getElementById("attendance-table");
