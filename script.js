@@ -1,4 +1,4 @@
-const GAS_URL = "YOUR_DEPLOYED_WEB_APP_URL"; // Update with your Apps Script URL
+const GAS_URL = "https://script.google.com/macros/s/AKfycbzSRnwIYoyLGF8Pz9S9gNJsarfM_bHc9nVjbLlfr9axTzsIJ2K4zzKSFPOJsiygbgsRKg/exec"; // Update with your Apps Script URL
 
 function login() {
   const email = document.getElementById("email").value;
