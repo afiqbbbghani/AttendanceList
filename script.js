@@ -1,5 +1,5 @@
 
-const scriptURL = 'YOUR_SCRIPT_URL_HERE';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzSRnwIYoyLGF8Pz9S9gNJsarfM_bHc9nVjbLlfr9axTzsIJ2K4zzKSFPOJsiygbgsRKg/exec';
 
 if (localStorage.getItem('loggedIn') === 'true') {
   document.getElementById('login-form').style.display = 'none';
