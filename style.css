@@ -1,32 +1,93 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #f9f9f9;
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+body {
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, #eef2f3, #cfd9df);
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Container styling */
 .container {
-  width: 400px;
-  margin: 100px auto;
-  padding: 30px;
+  width: 100%;
+  max-width: 450px;
   background: #fff;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  border-radius: 10px;
+  padding: 30px 40px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
   text-align: center;
 }
 
-input, button {
-  width: 90%;
-  padding: 10px;
-  margin: 10px 0;
+/* Heading */
+h1 {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #1a73e8;
 }
 
+/* Input fields */
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: #1a73e8;
+  outline: none;
+}
+
+/* Buttons */
 button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
   background-color: #1a73e8;
   color: white;
   border: none;
-  cursor: pointer;
+  border-radius: 8px;
   font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: #0f57c9;
+  background-color: #0c59d1;
+}
+
+/* Attendance table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f1f3f4;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
 }
