@@ -1,21 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Clock In / Out</title>
-  <meta name="google-signin-client_id" content="https://script.google.com/macros/s/AKfycbxVV1cphZY_tGcppd3ngbPz1Tkxr7ny8P01tWp0mShSwb-vMxqySTAtCEev_96Wr4y0/exec">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clock In / Out System</title>
+  <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com" />
   <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <h1>Clock In / Out</h1>
-  <div class="g-signin2" data-onsuccess="onSignIn"></div>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+  <div class="bg-white shadow-lg rounded-2xl p-8 max-w-md w-full text-center">
+    <h1 class="text-3xl font-bold mb-4 text-blue-700">Clock In / Out</h1>
 
-  <div id="form" style="display:none;">
-    <p id="user-email"></p>
-    <input type="text" id="matric" placeholder="Enter Matric Number" required>
-    <button onclick="submitData('Clock In')">Clock In</button>
-    <button onclick="submitData('Clock Out')">Clock Out</button>
-    <button onclick="signOut()">Sign Out</button>
+    <div class="g-signin2 mb-4" data-onsuccess="onSignIn"></div>
+
+    <div id="form" class="space-y-4 hidden">
+      <p class="text-sm text-gray-600" id="user-email"></p>
+      <input id="matric" type="text" placeholder="Student Matric Number"
+        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"/>
+
+      <div class="flex justify-between space-x-2">
+        <button onclick="submitData('Clock In')"
+          class="w-1/2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Clock In</button>
+        <button onclick="submitData('Clock Out')"
+          class="w-1/2 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Clock Out</button>
+      </div>
+
+      <a href="attendance.html" class="block text-blue-500 underline hover:text-blue-700 text-sm">View Attendance List</a>
+
+      <button onclick="signOut()"
+        class="mt-4 text-sm text-gray-500 hover:text-gray-800">Sign Out</button>
+    </div>
   </div>
 
   <script src="script.js"></script>

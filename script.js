@@ -3,7 +3,7 @@ let userEmail = "";
 function onSignIn(googleUser) {
   const profile = googleUser.getBasicProfile();
   userEmail = profile.getEmail();
-  document.getElementById("user-email").innerText = `Logged in as ${userEmail}`;
+  document.getElementById("user-email").innerText = `Signed in as ${userEmail}`;
   document.querySelector(".g-signin2").style.display = "none";
   document.getElementById("form").style.display = "block";
 }
@@ -19,19 +19,17 @@ function signOut() {
 
 function submitData(action) {
   const matric = document.getElementById("matric").value;
-  if (!matric) {
-    alert("Enter Matric Number");
-    return;
-  }
+  if (!matric) return alert("Please enter your matric number.");
 
   fetch('YOUR_WEB_APP_URL', {
     method: 'POST',
-    body: JSON.stringify({ email: userEmail, matric: matric, action: action })
+    body: JSON.stringify({ email: userEmail, matric: matric, action: action }),
   })
   .then(res => res.json())
   .then(data => {
     if (data.status === "success") {
       alert(`${action} successful`);
+      document.getElementById("matric").value = "";
     } else {
       alert("Error: " + data.message);
     }
