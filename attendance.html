@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Attendance Log</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Full Attendance List</h1>
+    <table id="attendance-table" style="width:100%;text-align:left;">
+      <tr><th>Matric Number</th><th>Type</th><th>Timestamp</th></tr>
+    </table>
+  </div>
+  <script>
+    fetch("https://script.google.com/macros/s/AKfycbzSRnwIYoyLGF8Pz9S9gNJsarfM_bHc9nVjbLlfr9axTzsIJ2K4zzKSFPOJsiygbgsRKg/exec", {
+      method: "POST",
+      body: new URLSearchParams({ action: "list" })
+    })
+    .then(res => res.json())
+    .then(data => {
+      const table = document.getElementById("attendance-table");
+      data.forEach(row => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td>`;
+        table.appendChild(tr);
+      });
+    });
+  </script>
+</body>
+</html>
