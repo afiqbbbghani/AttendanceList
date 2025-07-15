@@ -1,40 +1,47 @@
-
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzSRnwIYoyLGF8Pz9S9gNJsarfM_bHc9nVjbLlfr9axTzsIJ2K4zzKSFPOJsiygbgsRKg/exec';
-
-if (localStorage.getItem('loggedIn') === 'true') {
-  document.getElementById('login-form').style.display = 'none';
-  document.getElementById('main-form').style.display = 'block';
-}
+const GAS_URL = "YOUR_DEPLOYED_WEB_APP_URL"; // Update with your Apps Script URL
 
 function login() {
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-  fetch(scriptURL + '?action=login', {
-    method: 'POST',
-    body: JSON.stringify({ email, password }),
-    headers: { 'Content-Type': 'application/json' }
-  }).then(res => res.json())
-    .then(data => {
-      if (data.success) {
-        localStorage.setItem('loggedIn', 'true');
-        document.getElementById('login-form').style.display = 'none';
-        document.getElementById('main-form').style.display = 'block';
-      } else {
-        alert('Invalid credentials');
-      }
-    });
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  fetch(GAS_URL, {
+    method: "POST",
+    body: new URLSearchParams({
+      action: "login",
+      email,
+      password
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      localStorage.setItem("loggedIn", true);
+      document.getElementById("login-section").style.display = "none";
+      document.getElementById("attendance-section").style.display = "block";
+    } else {
+      alert("Invalid login.");
+    }
+  });
 }
 
-function submitAttendance(type) {
-  const matric = document.getElementById('matric').value;
-  if (!matric) return alert('Please enter matric number');
-  fetch(scriptURL + '?action=log', {
-    method: 'POST',
-    body: JSON.stringify({ matric, type }),
-    headers: { 'Content-Type': 'application/json' }
-  }).then(res => res.json())
-    .then(data => {
-      document.getElementById('message').textContent = data.message;
-      document.getElementById('matric').value = '';
-    });
+function clock(actionType) {
+  const matric = document.getElementById("matric").value;
+  fetch(GAS_URL, {
+    method: "POST",
+    body: new URLSearchParams({
+      action: "clock",
+      matric,
+      type: actionType
+    })
+  })
+  .then(res => res.text())
+  .then(alert);
+}
+
+function clockIn() {
+  clock("Clock-In");
+}
+
+function clockOut() {
+  clock("Clock-Out");
 }
