@@ -1,4 +1,4 @@
-fetch('https://script.google.com/macros/s/AKfycbxB2A5GZLBm8tkNElY20bZLZ3H_5chXf0v3EI7FRAg/dev')
+fetch('https://script.google.com/macros/s/AKfycbxVV1cphZY_tGcppd3ngbPz1Tkxr7ny8P01tWp0mShSwb-vMxqySTAtCEev_96Wr4y0/exec')
   .then(res => res.json())
   .then(data => {
     const table = document.getElementById("attendance-table");
